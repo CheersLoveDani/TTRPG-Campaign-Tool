@@ -20,10 +20,12 @@ function PngViewer(props) {
       defaultPositionY={0}
       onPanning={handlePan}
       onZoom={handleZoom}
-      limitToBounds={false}
+      limitToBounds={true}
       minScale={0.5}
       maxScale={5}
       centerContent={false}
+      limitToWrapperBounds={true}
+      limitToWrapperBoundsPadding={50}
     >
       {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
         <>
