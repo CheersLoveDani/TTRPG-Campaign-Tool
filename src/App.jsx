@@ -21,7 +21,7 @@ function App() {
     if (element) {
       const rect = element.getBoundingClientRect();
       const x = (event.clientX - rect.left ) / mainMapScale;
-    const y = (event.clientY - rect.top ) / mainMapScale;
+      const y = (event.clientY - rect.top ) / mainMapScale;
       setCoordinates({ x, y });
       // console.log("scale: " + mainMapScale + ", positionX: " + mainMapPosition.x +", positionY: " + mainMapPosition.y);
       console.log(`Clicked at (x: ${x}, y: ${y}) with scale: ${mainMapScale}, mappos: ${mainMapPosition.x}`);
