@@ -1,0 +1,35 @@
+.pin-point {
+  position: absolute;
+  width: 0;
+  height: 0;
+  .pin-container {
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: black;
+      z-index: 1;
+    }
+
+    .pin {
+      position: absolute;
+      transform: translate(0, -27px);
+      font-size: 3.5rem;
+      color: black;
+      background: rgba(255, 255, 255, 0.281);
+      backdrop-filter: blur(40px);
+      border-radius: 8px 8px 40px 40px;
+      padding-bottom: 15px;
+    }
+  }
+}

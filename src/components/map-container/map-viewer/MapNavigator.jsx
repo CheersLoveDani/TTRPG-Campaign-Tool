@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
-import {useRecoilState} from 'recoil'
-import { mainMapPositionState, mainMapScaleState } from '../../lib/atoms/mapAtoms';
+import { useRecoilState } from 'recoil'
+import { mainMapPositionState, mainMapScaleState } from '../../../lib/atoms/mapAtoms';
 
 function MapNavigator(props) {
   const [mainMapPosition, setMainMapPosition] = useRecoilState(mainMapPositionState);
@@ -25,7 +25,7 @@ function MapNavigator(props) {
       centerContent={false}
       limitToWrapperBounds={true}
       limitToWrapperBoundsPadding={50}
-      doubleClick={{disabled:true}}
+      doubleClick={{ disabled: true }}
     >
       {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
         <>

@@ -1,0 +1,19 @@
+.container {
+  max-height: 95vh;
+}
+.map-navigator {
+  width: 100%;
+  height: 100%;
+}
+.map-container {
+  position: relative;
+  .img-container {
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
