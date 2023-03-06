@@ -1,5 +1,5 @@
 import MapNavigator from './map-viewer/MapNavigator'
-import "./map-container.scss";
+import style from "./map-container.scss";
 import { KeepScale } from "react-zoom-pan-pinch";
 import { GiCastle } from 'react-icons/gi'
 import { useRef, useState } from "react";
@@ -26,10 +26,10 @@ const MapContainer = () => {
 
 
   return (
-    <div className="container">
+    <div className="map-container">
 
       <MapNavigator>
-        <div className="map-container" ref={ref} onClick={handleMouseDown}>
+        <div className="map-img-container" ref={ref} onClick={handleMouseDown}>
           <div className="img-container" >
             <img src="src\assets\test1.png" />
             <MapPin coordinates={coordinates} />

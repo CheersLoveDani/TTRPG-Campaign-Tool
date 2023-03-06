@@ -1,0 +1,15 @@
+.files-container {
+  padding: 2rem;
+  height: 100vh;
+  min-width: 30rem;
+  flex: 1;
+  overflow-y: auto;
+  border-right: 1px white dashed;
+  .dir {
+    &.dir-level-1 {
+      > .dir {
+        display: none;
+      }
+    }
+  }
+}

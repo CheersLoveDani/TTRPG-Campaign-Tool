@@ -1,12 +1,19 @@
-.container {
-  max-height: 95vh;
+.map-container {
+  border: 1px white dashed;
+  margin: 2rem;
+  height: 95vh;
+  padding: 0.25rem;
+  .react-transform-wrapper {
+    max-height: 100%;
+  }
 }
 .map-navigator {
   width: 100%;
   height: 100%;
 }
-.map-container {
+.map-img-container {
   position: relative;
+  // border: 2px white dashed;
   .img-container {
     width: 100%;
     height: 100%;
