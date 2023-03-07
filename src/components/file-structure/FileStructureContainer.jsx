@@ -1,35 +1,9 @@
 import './file-structure-container.scss'
 import React, { useEffect, useState } from 'react';
 import { readDir, BaseDirectory, exists, createDir } from '@tauri-apps/api/fs';
+import FileList from './file-list/FileList';
 
-/**
- * A recursive component for displaying a list of files and directories.
- *
- * @param {Object} props - The component props.
- * @param {Array} props.files - An array of files and directories.
- * @param {number} [props.level=1] - The nesting level of the component.
- * @returns {JSX.Element} - The component's rendered output.
- */
-const FileList = ({ files, level = 1 }) => {
-  return (
-    <div className={`dir dir-level-${level}`}>
-      {files.map((file) => (
-        <div key={file.name}>
-          {file.children ? (
-            <div className={`dir dir-level-${level + 1}`}>
-              <div className={`${file.name} folder-name`}>{file.name}</div>
-              <FileList files={file.children} level={level + 1} />
-            </div>
-          ) : (
-            <div className={`file file-level-${level}`}>
-              {file.name}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-};
+
 
 /**
  * A React component for displaying the file structure of a directory.
