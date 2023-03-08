@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+import { Fragment } from 'react';
+import { AiFillFolder, AiFillFolderOpen } from 'react-icons/ai'
+import { useRecoilState } from 'recoil';
+import { foldersOpenState } from '../../../lib/atoms/mapAtoms';
+
 /**
  * A recursive component for displaying a list of files and directories.
  *
@@ -8,45 +12,64 @@ import React, { useState } from 'react';
  * @returns {JSX.Element} - The component's rendered output.
  */
 const FileList = ({ files, level = 0 }) => {
-  const [openDirs, setOpenDirs] = useState(new Set());
+  const [foldersOpen, setFoldersOpen] = useRecoilState(foldersOpenState)
+  console.log(foldersOpen);
 
-  const toggleOpenDir = (dirName) => {
-    setOpenDirs((prevOpenDirs) => {
-      const updatedOpenDirs = new Set(prevOpenDirs);
-      if (updatedOpenDirs.has(dirName)) {
-        updatedOpenDirs.delete(dirName);
-        // Remove "open" class from all child dirs
-        Array.from(document.querySelectorAll(`.dir-level-${level + 1} .dir`)).forEach((childDir) => {
-          childDir.classList.remove('open');
-        });
-      } else {
-        updatedOpenDirs.add(dirName);
-      }
-      return updatedOpenDirs;
-    });
+  const toggleOpenDir = (currentDir, fileName) => {
+    if (currentDir.classList.contains("open")) {
+      currentDir.querySelectorAll("*").forEach(div => {
+        div.classList.remove("open")
+      });
+      setFoldersOpen(foldersOpen.filter((file) => {
+        return file != fileName;
+      }))
+    } else {
+      setFoldersOpen([...foldersOpen, fileName]);
+    }
+    currentDir.classList.toggle("open");
   };
 
   return (
     <>
       {files.map((file) => (
-        <>
+        <Fragment key={file.name}>
           {file.children ? (
             <div
-              key={file.name}
-              className={`dir dir-level-${level + 1} ${openDirs.has(file.name) ? 'open' : ''}`}
+              className={`dir dir-level-${level + 1} ${file.name} `}
               onClick={(e) => {
                 e.stopPropagation();
-                toggleOpenDir(file.name);
-              }}>
-              <div className={`${file.name} folder-name`}>{file.name}</div>
+                toggleOpenDir(e.currentTarget, file.name);
+              }}
+            >
+              <div
+                className={`${file.name} folder-name`}
+              >
+                <div className='icon-container'>
+                  {foldersOpen.includes(file.name) ?
+                    <AiFillFolderOpen />
+                    :
+                    <AiFillFolder />
+                  }
+                </div>
+                <h4>
+                  {file.name}
+                </h4>
+              </div>
               <FileList files={file.children} level={level + 1} />
             </div>
           ) : (
-            <div key={file.name} className={`file file-level-${level}`}>
-              {file.name}
+            <div
+              className={`file file-level-${level}`}
+              onClick={(e) => {
+                e.stopPropagation()
+              }}
+            >
+              <h4>
+                {file.name}
+              </h4>
             </div>
           )}
-        </>
+        </Fragment>
       ))}
     </>
   );

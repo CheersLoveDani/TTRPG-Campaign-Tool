@@ -10,7 +10,6 @@ import MapPin from './map-pin/MapPin';
 const MapContainer = () => {
   const ref = useRef(null);
   const [coordinates, setCoordinates] = useState({ x: 500, y: 500 })
-  const [mainMapPosition, setMainMapPosition] = useRecoilState(mainMapPositionState);
   const [mainMapScale, setMainMapScale] = useRecoilState(mainMapScaleState);
 
   const handleMouseDown = (event) => {

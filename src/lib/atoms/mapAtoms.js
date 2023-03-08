@@ -9,3 +9,8 @@ export const mainMapScaleState = atom({
   key: 'mainMapScaleState', // unique ID (with respect to other atoms/selectors)
   default: 1, // default value (aka initial value)
 });
+
+export const foldersOpenState = atom({
+  key: 'foldersOpenState', // unique ID (with respect to other atoms/selectors)
+  default: [], // default value (aka initial value)
+});

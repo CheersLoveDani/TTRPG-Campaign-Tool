@@ -22,11 +22,11 @@ const FileStructureContainer = () => {
     const fetchFiles = async () => {
       try {
         // The path to the directory to fetch files from
-        const dirPath = 'FreeBananaCompany\\TTRPG Campaign Tool\\data';
+        const dirPath = 'FreeBananaCompany/TTRPG Campaign Tool/data';
         // Check if the directorys exists
         const directoryNames = ['Areas', 'Players', 'Characters', 'Items', 'Monsters', 'Rules'];
         for (const directoryName of directoryNames) {
-          const dirPath = `FreeBananaCompany\\TTRPG Campaign Tool\\data\\${directoryName}`;
+          const dirPath = `FreeBananaCompany/TTRPG Campaign Tool/data/${directoryName}`;
           const dirExistsResult = await exists(dirPath);
           if (!dirExistsResult) {
             await createDir(dirPath, { dir: BaseDirectory.Document, recursive: true });
