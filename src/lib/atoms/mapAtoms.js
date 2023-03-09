@@ -14,3 +14,8 @@ export const foldersOpenState = atom({
   key: 'foldersOpenState', // unique ID (with respect to other atoms/selectors)
   default: [], // default value (aka initial value)
 });
+
+export const filesState = atom({
+  key: 'filesState', // unique ID (with respect to other atoms/selectors)
+  default: [], // default value (aka initial value)
+});

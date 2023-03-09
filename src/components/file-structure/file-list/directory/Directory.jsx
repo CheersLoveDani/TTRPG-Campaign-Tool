@@ -23,6 +23,20 @@ const Directory = ({ file, level }) => {
   };
 
 
+  const handleMouseEnter = (event) => {
+    event.stopPropagation();
+    event.currentTarget.parentElement.classList.add("hovered");
+    // event.currentTarget.parentElement.classList.remove("hovered");
+    console.log(event);
+  };
+
+  const handleMouseLeave = (event) => {
+    event.stopPropagation();
+    event.currentTarget.parentElement.classList.remove("hovered");
+    // event.currentTarget.parentElement.classList.add("hovered");
+  };
+
+
   return (
     <div
       className={`dir dir-level-${level + 1} ${file.name} `}
@@ -30,9 +44,17 @@ const Directory = ({ file, level }) => {
         e.stopPropagation();
         toggleOpenDir(e.currentTarget, file.name);
       }}
+
     >
       <div
         className={`${file.name} folder-name`}
+        onMouseEnter={(event) => {
+
+          handleMouseEnter(event);
+        }}
+        onMouseLeave={(event) => {
+          handleMouseLeave(event);
+        }}
       >
         <div className='icon-container'>
           {foldersOpen.includes(file.name) ?
@@ -46,7 +68,7 @@ const Directory = ({ file, level }) => {
         </h4>
         <div className="flex-spacer" style={{ flex: 1, }} />
         <div className="folder-options">
-          <div className='icon-container add-folder'>
+          <div className='icon-container add-folder' >
             <AiFillFolderAdd />
           </div>
           <div className='icon-container add-file'>

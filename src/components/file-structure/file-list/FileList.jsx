@@ -1,7 +1,4 @@
 import { Fragment } from 'react';
-import { AiFillFolder, AiFillFolderOpen } from 'react-icons/ai'
-import { useRecoilState } from 'recoil';
-import { foldersOpenState } from '../../../lib/atoms/mapAtoms';
 import Directory from './directory/Directory';
 import File from './file/File';
 

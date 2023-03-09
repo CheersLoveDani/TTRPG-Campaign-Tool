@@ -19,7 +19,7 @@
     }
     50% {
       max-height: 100vh;
-      padding: 0.5rem;
+      padding: 0.6rem 0.1rem 0.6rem 0.6rem;
     }
     100% {
       opacity: 1;
@@ -33,16 +33,14 @@
       display: flex;
       flex-direction: row;
       .icon-container {
-        font-size: 1.25em;
+        font-size: 1.35em;
         opacity: 0.1;
         pointer-events: none;
         transition: 0.2s;
       }
     }
-    &:hover,
-    &:active,
-    &:focus {
-      .folder-options .icon-container {
+    &.hovered {
+      > .folder-name > .folder-options > .icon-container {
         opacity: 1;
         pointer-events: all;
         &:hover,
@@ -53,14 +51,17 @@
       }
     }
   }
-
+  .folder-name,
+  .file {
+    cursor: pointer;
+  }
   .dir,
   .file {
     display: block;
     padding: 0.5rem;
-    cursor: pointer;
-    transition: opacity 0.2s ease-in-out;
+    transition: 0.1s ease-in-out;
     border-left: 3px transparent solid;
+
     .folder-name {
       display: flex;
       flex-direction: row;
@@ -99,15 +100,17 @@
       > .dir {
         font-size: 1rem;
         height: auto;
-        padding: 0.5rem;
+        padding: 0.5rem 0 0.5rem 0.5rem;
         animation: dirAnimation 0.4s ease-in-out forwards;
         pointer-events: all;
+        transform: translateY(0px);
         &.open > .file {
           font-size: 1rem;
           height: auto;
           padding: 0.5rem;
           animation: dirAnimation 0.4s ease-in-out forwards;
           pointer-events: all;
+          transform: translateY(0px);
         }
       }
     }
@@ -117,6 +120,7 @@
       font-size: 0;
       padding: 0;
       pointer-events: none;
+      transform: translateY(-20px);
       > .file {
         height: 0;
         font-size: 0;
