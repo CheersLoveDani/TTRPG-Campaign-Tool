@@ -3,13 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { readDir, BaseDirectory, exists, createDir } from '@tauri-apps/api/fs';
 import FileList from './file-list/FileList';
 
-
-
-/**
- * A React component for displaying the file structure of a directory.
- *
- * @returns {JSX.Element} - The component's rendered output.
- */
 const FileStructureContainer = () => {
   const [files, setFiles] = useState([]);
 
@@ -47,7 +40,6 @@ const FileStructureContainer = () => {
 
   return (
     <div className="files-container">
-      <h1>List of Files in the Documents directory:</h1>
       <FileList files={files} />
     </div>
   );
