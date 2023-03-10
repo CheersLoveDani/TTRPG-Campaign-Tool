@@ -23,7 +23,7 @@ const FileStructureContainer = () => {
           const dirPath = `${directoryPath}${directoryName}`;
           const dirExistsResult = await exists(dirPath);
           if (!dirExistsResult) {
-            await createDir(directoryPath, { dir: BaseDirectory.Document, recursive: true });
+            await createDir(dirPath, { dir: BaseDirectory.Document, recursive: true });
           }
         }
         // Fetch the list of files and directories from the specified directory

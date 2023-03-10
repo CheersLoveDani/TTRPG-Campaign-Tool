@@ -1,4 +1,5 @@
 import {atom} from 'recoil'
+import { directoryPath } from '../settings/settings';
 
 export const mainMapPositionState = atom({
   key: 'mainMapPositionState', // unique ID (with respect to other atoms/selectors)

@@ -1,0 +1,96 @@
+.add-folder {
+  .popup-modal {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: 0.2s;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    &.closed {
+      opacity: 0;
+      pointer-events: none;
+    }
+    &.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-background {
+      backdrop-filter: blur(4px);
+      width: 100%;
+      height: 100%;
+      top: 0;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: auto;
+      .inner-modal-container {
+        background: #1f1f1fe7;
+        padding: 4rem;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        position: relative;
+        .close-button {
+          color: white;
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          padding: 0.25rem;
+          display: flex;
+          justify-self: center;
+          align-items: center;
+          border-radius: 0.25rem;
+          &:hover,
+          &:active,
+          &:focus {
+            background: #2f2f2fe7;
+          }
+          svg path {
+            color: white;
+            stroke: white;
+          }
+        }
+        h2 {
+          margin: 0;
+        }
+        .input-container {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: stretch;
+          input,
+          button {
+            transition: 0.2s;
+            padding: 0.5rem;
+            background: #2f2f2fe7;
+            border: 1px rgba(255, 255, 255, 0.39) solid;
+            border-radius: 0;
+            color: white;
+            &::placeholder {
+              color: rgba(255, 255, 255, 0.651);
+            }
+            &:focus,
+            &:active {
+              border-radius: 0;
+              outline: none;
+              border: 1px rgba(255, 255, 255, 0.664) solid;
+            }
+            &:hover {
+              background: #3b3b3be7;
+            }
+          }
+          input {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+}

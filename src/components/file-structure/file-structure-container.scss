@@ -34,14 +34,14 @@
       flex-direction: row;
       .icon-container {
         font-size: 1.35em;
-        opacity: 0.1;
+        color: rgba(255, 255, 255, 0.1);
         pointer-events: none;
         transition: 0.2s;
       }
     }
     &.hovered {
       > .folder-name > .folder-options > .icon-container {
-        opacity: 1;
+        color: rgba(255, 255, 255, 1);
         pointer-events: all;
         &:hover,
         &:active,

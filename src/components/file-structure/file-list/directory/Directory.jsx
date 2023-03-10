@@ -3,6 +3,7 @@ import { GiTreasureMap } from "react-icons/gi";
 import { useRecoilState } from "recoil";
 import { foldersOpenState } from "../../../../lib/atoms/mapAtoms";
 import FileList from "../FileList";
+import AddFolder from "./buttons/AddFolder";
 
 
 const Directory = ({ file, level }) => {
@@ -26,14 +27,11 @@ const Directory = ({ file, level }) => {
   const handleMouseEnter = (event) => {
     event.stopPropagation();
     event.currentTarget.parentElement.classList.add("hovered");
-    // event.currentTarget.parentElement.classList.remove("hovered");
-    console.log(event);
   };
 
   const handleMouseLeave = (event) => {
     event.stopPropagation();
     event.currentTarget.parentElement.classList.remove("hovered");
-    // event.currentTarget.parentElement.classList.add("hovered");
   };
 
 
@@ -68,9 +66,7 @@ const Directory = ({ file, level }) => {
         </h4>
         <div className="flex-spacer" style={{ flex: 1, }} />
         <div className="folder-options">
-          <div className='icon-container add-folder' >
-            <AiFillFolderAdd />
-          </div>
+          <AddFolder file={file} />
           <div className='icon-container add-file'>
             <AiFillFileAdd />
           </div>
