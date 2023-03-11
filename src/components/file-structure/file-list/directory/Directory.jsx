@@ -4,6 +4,11 @@ import { useRecoilState } from "recoil";
 import { foldersOpenState } from "../../../../lib/atoms/mapAtoms";
 import FileList from "../FileList";
 import AddFolder from "./buttons/AddFolder";
+import DeleteFolder from "./buttons/DeleteFolder";
+
+
+
+
 
 
 const Directory = ({ file, level }) => {
@@ -70,9 +75,7 @@ const Directory = ({ file, level }) => {
           <div className='icon-container add-file'>
             <AiFillFileAdd />
           </div>
-          <div className='icon-container add-map'>
-            <GiTreasureMap />
-          </div>
+          <DeleteFolder file={file} />
         </div>
       </div>
       <FileList files={file.children} level={level + 1} />

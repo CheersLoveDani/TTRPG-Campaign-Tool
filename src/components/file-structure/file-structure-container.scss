@@ -48,6 +48,14 @@
         &:focus {
           color: rgba(255, 255, 255, 0.5);
         }
+        &.delete-folder {
+          color: rgb(252, 39, 39);
+          &:hover,
+          &:active,
+          &:focus {
+            color: rgba(252, 39, 39, 0.74);
+          }
+        }
       }
     }
   }
