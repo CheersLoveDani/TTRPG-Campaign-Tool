@@ -7,6 +7,7 @@ import { readDir, BaseDirectory, exists, createDir } from '@tauri-apps/api/fs';
 import { fetchFiles } from '../../../../../lib/fetchFiles';
 import { useRecoilState } from 'recoil';
 import { filesState } from '../../../../../lib/atoms/mapAtoms';
+import { toast } from 'react-toastify';
 
 Modal.setAppElement('#root');
 
@@ -33,13 +34,21 @@ const AddFolder = ({ file }) => {
     try {
 
       const dirExistsResult = await exists(`${file.path}${folderName}/`);
-      if (!dirExistsResult) {
-        await createDir(`${file.path}/${folderName}/`, { dir: BaseDirectory.Document });
+      if (folderName == '') {
+        toast.error(`ERROR: Folder must have a name`)
+        return
       }
-
+      if (dirExistsResult) {
+        toast.error(`ERROR: Folder named '${folderName}' already exists in this directory`)
+        return
+      }
+      await createDir(`${file.path}/${folderName}/`, { dir: BaseDirectory.Document });
+      toast.success(`Successfully created ${folderName}`)
       console.log(`Successfully created ${folderName} folder at ${file.path}`);
+
     } catch (err) {
       console.log(err);
+      toast.error(err)
     }
 
     setModalOpen(false);

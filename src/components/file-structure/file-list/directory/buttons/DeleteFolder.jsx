@@ -6,6 +6,9 @@ import { filesState } from '../../../../../lib/atoms/mapAtoms';
 import { fetchFiles } from '../../../../../lib/fetchFiles';
 import { readDir, BaseDirectory, exists, createDir, removeDir } from '@tauri-apps/api/fs';
 import Modal from 'react-modal'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function DeleteFolder({ file }) {
   const [files, setFiles] = useRecoilState(filesState);
@@ -31,8 +34,10 @@ function DeleteFolder({ file }) {
       if (dirExistsResult) {
         await removeDir(`${file.path}/`, { dir: BaseDirectory.Document, recursive: true });
         console.log(`Folder ${file.name} at ${file.path} successfully deleted`);
+        toast.warning(`Folder ${file.name} at ${file.path} successfully deleted`);
       } else {
         console.log(`Folder ${file.name} at ${file.path} does not exist`);
+        toast.error(`ERROR: Folder ${file.name} at ${file.path} does not exist`);
       }
 
     } catch (err) {
